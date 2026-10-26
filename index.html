@@ -19,6 +19,7 @@
     --rule: #dfe2dc;
     --accent: #2f45d8;        /* data + links */
     --accent-wash: #e9ecfd;
+    --disc: #e3e7fb;
     --past: #b9bec6;          /* "before" series */
     --good: #1d7a4f;
     --strike: #b4343a;
@@ -29,13 +30,13 @@
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
       --bg: #0f1114; --paper: #171a1f; --ink: #eef0ec; --ink-2: #b3b9c3; --muted: #7f8692;
-      --rule: #2a2e35; --accent: #8c9bff; --accent-wash: #1d2240; --past: #4f5560;
+      --rule: #2a2e35; --accent: #8c9bff; --accent-wash: #1d2240; --disc: #262d5c; --past: #4f5560;
       --good: #6cc79a; --strike: #f08a8f; color-scheme: dark;
     }
   }
   :root[data-theme="dark"] {
     --bg: #0f1114; --paper: #171a1f; --ink: #eef0ec; --ink-2: #b3b9c3; --muted: #7f8692;
-    --rule: #2a2e35; --accent: #8c9bff; --accent-wash: #1d2240; --past: #4f5560;
+    --rule: #2a2e35; --accent: #8c9bff; --accent-wash: #1d2240; --disc: #262d5c; --past: #4f5560;
     --good: #6cc79a; --strike: #f08a8f; color-scheme: dark;
   }
 
@@ -55,6 +56,11 @@
   .query svg { flex: none; }
   .caret { display: inline-block; width: 1px; height: 1.1em; background: var(--ink); vertical-align: -3px; margin-left: 1px; animation: blink 1.1s steps(1) infinite; }
   @keyframes blink { 50% { opacity: 0; } }
+  .hero-top { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 400px); gap: 32px; align-items: center; }
+  .hero-main { min-width: 0; }
+  .hero-art { margin: 0; position: relative; aspect-ratio: 1; max-width: 100%; }
+  .hero-art::before { content: ""; position: absolute; inset: 8% 6% 4%; border-radius: 50%; background: var(--disc); }
+  .hero-art img { position: relative; width: 100%; height: auto; display: block; }
   .count { font: 400 13px var(--body); color: var(--muted); margin: 14px 0 22px 20px; }
   .listing { max-width: 720px; padding-left: 20px; }
   .spons { font: 700 13px var(--body); color: var(--ink); }
@@ -172,6 +178,8 @@
     .totals { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .sitelinks { grid-template-columns: minmax(0, 1fr); }
     .listing, .count { padding-left: 0; margin-left: 0; }
+    .hero-top { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+    .hero-art { order: -1; width: 220px; }
   }
   @media (max-width: 480px) {
     .facts { grid-template-columns: minmax(0, 1fr); }
@@ -185,6 +193,7 @@
     @page { size: A4; margin: 12mm; }
     body { font-size: 12.5px; }
     .query, .count, .caret { display: none; }
+    .hero-art { width: 200px; }
     .hero { padding-block: 0 12px; }
     section { padding-block: 20px 0; }
     .case, .ad-card, .steps li, .chart { break-inside: avoid; }
@@ -197,6 +206,8 @@
 <div class="wrap">
 
 <header class="hero">
+  <div class="hero-top">
+  <div class="hero-main">
   <div class="query" aria-hidden="true">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5L21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
     <span>google ads specialist bengaluru<span class="caret"></span></span>
@@ -221,6 +232,9 @@
       <span>shashank.m.s2580@gmail.com</span>
       <a href="https://www.linkedin.com/in/shashankshankar02/">linkedin.com/in/shashankshankar02</a>
     </div>
+  </div>
+  </div>
+  <figure class="hero-art"><img src="hero.webp" width="760" height="760" alt="Illustration of a marketer working on a laptop next to a rising bar chart and a search ad"></figure>
   </div>
 
   <div class="totals">
